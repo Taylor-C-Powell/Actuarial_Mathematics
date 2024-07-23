@@ -15,6 +15,10 @@ def dmac_inflows(i):
     return numerator / denominator
 
 
+def dmod_inflows(i):
+    return dmac_inflows(i) / (1 + i)
+
+
 def dmac_bond(F, r, n, i, C):
     if F == find_bond_price(F, r, n, i, C):
         return annuity_due_PV(i, n)
