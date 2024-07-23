@@ -1,18 +1,18 @@
-def calculate_annuity_immediate_PV(interest_rate, accumulation_periods):
+def annuity_immediate_PV(i, n):
     # Calculates the present value of an annuity immediate: "a, angle(n)"
-    return (1 - pow((1 / (1 + interest_rate)), accumulation_periods)) / interest_rate
+    return (1 - pow((1 / (1 + i)), n)) / i
 
 
-def calculate_annuity_immediate_AV(interest_rate, accumulation_periods):
+def annuity_immediate_AV(i, n):
     # Calculates the accumulated value of an annuity immediate: "s, angle(n)"
-    return (pow((1 + interest_rate), accumulation_periods) - 1) / interest_rate
+    return (pow((1 + i), n) - 1) / i
 
 
-def calculate_annuity_due_PV(interest_rate, accumulation_periods):
+def annuity_due_PV(i, n):
     # Calculates the present value of an annuity due: "a dot dot, angle(n)"
-    return 1 + calculate_annuity_immediate_PV(interest_rate, accumulation_periods - 1)
+    return 1 + annuity_immediate_PV(i, n - 1)
 
 
-def calculate_annuity_due_AV(interest_rate, accumulation_periods):
+def annuity_due_AV(i, n):
     # Calculates the accumulated value of an annuity due: "s dot dot, angle(n)"
-    return calculate_annuity_immediate_AV(interest_rate, accumulation_periods + 1) - 1
+    return annuity_immediate_AV(i, n + 1) - 1
