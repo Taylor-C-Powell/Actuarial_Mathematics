@@ -25,6 +25,10 @@ def dmac_bond(F, r, n, i, C):
     return ((F * r * increasing_annuity_immediate_PV(i, n)) + (n * C * v(i, n))) / find_bond_price(F, r, n, i, C)
 
 
+def dmod_bond(F, r, n, i, C):
+    return dmac_bond(F, r, n, i, C) / (1 + i)
+
+
 def dmac_mortgage(n, i):
     return increasing_annuity_immediate_PV(i, n) / annuity_immediate_PV(i, n)
 
