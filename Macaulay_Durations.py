@@ -36,5 +36,6 @@ def dmac_mortgage(n, i):
 def dmac_perpetuity_immediate(i):
     return (1 + i) / i
 
+
 def dmac_perpetuity_due(i):
     return 1 / i
