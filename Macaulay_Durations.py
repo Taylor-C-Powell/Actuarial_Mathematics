@@ -23,3 +23,10 @@ def dmac_bond(F, r, n, i, C):
 
 def dmac_mortgage(n, i):
     return increasing_annuity_immediate_PV(i, n) / annuity_immediate_PV(i, n)
+
+
+def dmac_perpetuity_immediate(i):
+    return (1 + i) / i
+
+def dmac_perpetuity_due(i):
+    return 1 / i
