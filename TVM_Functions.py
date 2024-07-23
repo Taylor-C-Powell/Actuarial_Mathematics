@@ -5,4 +5,3 @@ def v(i, n):
 def d(i):
     return i / (1 + i)
 
-#test
