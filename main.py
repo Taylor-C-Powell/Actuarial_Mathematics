@@ -1,5 +1,5 @@
 from Annuities import *
-
+from TVM_Functions import *
 
 def calculate_compound_interest(interest_rate, accumulation_periods):
     return pow((1 + interest_rate), accumulation_periods)
@@ -32,13 +32,12 @@ def calculate_num_of_increasing_payments(previous_value, interest_rate, initial_
     print(previous_value)
 
 
-def calculate_v(i, n):
-    return pow((1/(1+i)), n)
+
 
 
 def find_bond_price(F, C, r, i, n):
-    return (F * r * calculate_annuity_immediate_PV(i, n)) + (C * calculate_v(i, n))
+    return (F * r * annuity_immediate_PV(i, n)) + (C * v(i, n))
 
 
-x = calculate_annuity_due_PV(0.08, 8)
+x = annuity_due_PV(0.08, 8)
 print(x)
