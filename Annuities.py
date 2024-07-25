@@ -22,3 +22,7 @@ def annuity_due_AV(i, n):
 
 def increasing_annuity_immediate_PV(i, n):
     return (annuity_due_PV(i, n) - (n * v(i, n))) / i
+
+
+def perpetuity_immediate(i):
+    return 1 / i
