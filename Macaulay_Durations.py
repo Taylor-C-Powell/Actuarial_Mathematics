@@ -46,7 +46,7 @@ def cmod_inflows(i):
 def dmac_bond(F, r, n, i, C):
     if F == find_bond_price(F, r, n, i, C):
         return annuity_due_PV(i, n)
-    return ((F * r * increasing_annuity_immediate_PV(i, n)) + (n * C * v(i, n))) / find_bond_price(F, r, n, i, C)/2
+    return ((F * r * increasing_annuity_immediate_PV(i, n)) + (n * C * v(i, n))) / find_bond_price(F, r, n, i, C) / 2
 
 
 def dmod_bond(F, r, n, i, C):
@@ -56,7 +56,7 @@ def dmod_bond(F, r, n, i, C):
 def cmac_bond(F, r, n, i, C):
     numerator = 0
     for period in range(n - 1):
-        numerator += pow(period + 1, 2) * (F * r ) * v(i, period + 1)
+        numerator += pow(period + 1, 2) * (F * r) * v(i, period + 1)
     numerator += pow(n, 2) * ((F * r) + C) * v(i, n)
     return numerator / find_bond_price(F, r, n, i, C)
 
@@ -78,10 +78,10 @@ def dmac_perpetuity_due(i):
 
 
 def first_order_modified_approximation(price_initial, interest_rate_initial, new_interest_rate):
-    return price_initial - (dmod_bond(1000, 0.07, 4, 0.06, 1000) * price_initial * (new_interest_rate - interest_rate_initial))
+    return price_initial - (
+                dmod_bond(1000, 0.07, 4, 0.06, 1000) * price_initial * (new_interest_rate - interest_rate_initial))
 
 
 def first_order_macaulay_approximation(price_initial, interest_rate_initial, new_interest_rate):
-    return price_initial * pow((1 + interest_rate_initial) / (1 + new_interest_rate), dmac_bond(1000, 0.07, 4, 0.06, 1000))
-
-
+    return price_initial * pow((1 + interest_rate_initial) / (1 + new_interest_rate),
+                               dmac_bond(1000, 0.07, 4, 0.06, 1000))
